@@ -1,7 +1,7 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    {% block header %}
+   {% block header %}
         <section >
             <div class="bg-cover bg-center bg-no-repeat pt-8" style="background-image: url('{{ asset('assets/img/background.svg') }}')">
                 <header>
@@ -43,9 +43,11 @@
                             <div class="divide-y space-y-4 divide-gray-100 dark:divide-gray-800">
                                 <div class="mt-8 flex gap-4 md:items-center">
 
-                                    <button class="bg-cyan-800 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-full">
-                                        Contact us
-                                    </button>
+    <a href="hello@botalite.es">
+    <button class="bg-cyan-800 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-full">
+        Contact us
+    </button>
+    </a>
 
                                 </div>
                             </div>
@@ -121,138 +123,202 @@
             </div>
         </section>
     {% endblock %}
-    {% block factalite %}
-        {# factalite #}
-        <section>
-            <div id="factalite" class="bg-white grid grid-cols-2 gap-6 px-80">
-                <div>
-                    <!-- Primera columna -->
-                    <div class="flex flex-col items-start gap-4 text-center">
-                        <!-- Logo -->
-                        <img src="{{ asset('assets/img/factalite.png') }}" alt="Logo Factalite" class="w-1/2 h-auto">
-
-                        <!-- Subtítulo -->
-                        <h3 class="text-xl leading-tight text-left whitespace-normal pb-8">Our specialized messaging solution for <br> fact-checking organizations</h3>
-                    </div>
-                    <!-- Imagen -->
-                    <img src="{{ asset('assets/img/pantalla.svg') }}" alt="pantalla factalite" class="w-full">
-                    <!-- Columnas inferiores -->
-                    <div class="grid grid-cols-3 gap-8 p-6">
-                        <div class="flex flex-col items-center justify-center">
-                            <img src="{{ asset('assets/img/grafico.svg') }}" alt="Imagen 1" class="w-1/3 h-auto mx-auto pb-2">
-                            <h4 class="text-2xl font-bold">Data-based decisions</h4>
-                            <p>with the support of an early warning system for viral disinformation campaigns</p>
-                        </div>
-                        <div class="flex flex-col items-center justify-center">
-                            <img src="{{ asset('assets/img/carpeta.svg') }}" alt="Imagen 2" class="w-1/3 h-auto mx-auto pb-1">
-                            <h4 class="text-2xl font-bold">Efficient management</h4>
-                            <p>assigns and monitors what your team of fact-checkers is working on</p>
-                        </div>
-                        <div class="flex flex-col items-center justify-center">
-                            <img src="{{ asset('assets/img/lupa.svg') }}" alt="Imagen 3" class="w-1/3 h-auto mx-auto pb-2">
-                            <h4 class="text-2xl font-bold">Improved research</h4>
-                            <p>analyzing trends and with API access for researchers</p>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <!-- Segunda columna -->
-                    <div class="ml-8 mr-14 pt-28 pr-26">
-                        <div >
-                            <h3 class="pb-2 pl-2 font-body font-bold uppercase text-[#00BDD9] lg:text-2xl">Fight disinformation on private messaging platforms</h3>
-                            <p class="font-semibold tracking-wide text-lg">Factalite is a natural language semi-automated chatbot for WhatsApp and other private messaging apps, linked to a centralized database and platform designed to tackle disinformation circulating on private messaging platforms in all formats: text, audio, image and video.</p>
-                            <hr class="border-black my-4">
-                        </div>
-                        <div>
-                            <h3 class="pb-2 pl-2 font-body font-bold uppercase text-[#00BDD9] lg:text-2xl">Deliver the information citizens need</h3>
-                            <p class="font-semibold tracking-wide text-lg">Factalite allows fact-checkers and media outlets to deliver verified information automatically to users that report disinformation and provide citizens with additional services including media literacy courses, newsletters and surveys.</p>
-                            <hr class="border-black my-4">
-                        </div>
-                        <div>
-                            <h3 class="pb-2 pl-2 font-body font-bold uppercase text-[#00BDD9] lg:text-2xl">Transform the newsroom workflow</h3>
-                            <p class="font-semibold tracking-wide text-lg">An AI-supported database system transforms the workflow of journalists and fact-checkers by enabling the automated matching and collection of disinformation content reported by users.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </section>
-    {% endblock %}
-    {% block organizations %}
-        {# organizations line #}
-        <section>
-            <div class="bg-[#72D1DF] pb-6">
-                <div class="flex justify-center items-center space-x-2">
-                    <h2 class="my-4 text-white text-3xl font-bold mb-4">Organizations that trust in our products</h2>
-                </div>
-                <div class="flex justify-center">
-                    <div class="flex items-center flex-col">
-                        <!-- Primera línea de logos -->
-                        <div class="flex justify-center pb-5">
-                            <a href="https://maldita.es/">
-                                <img src="{{ asset('assets/img/maldita.png') }}" alt="Logo 1" class="h-auto max-h-14 mx-4">
-                            </a>
-                            <a href="https://correctiv.org/">
-                                <img src="{{ asset('assets/img/correctiv.png') }}" alt="Logo 2" class="h-auto max-h-14 mx-4">
-                            </a>
-                            <a href="https://english.factcrescendo.com/">
-                                <img src="{{ asset('assets/img/factcrecendo.png') }}" alt="Logo 3" class="h-auto max-h-14 mx-4">
-                            </a>
-                            <a href="https://www.dpa.com/">
-                                <img src="{{ asset('assets/img/dpa-logo.png') }}" alt="Logo 6" class="h-auto max-h-14 mx-4">
-                            </a>
-                        </div>
-
-                        <!-- Segunda línea de logos -->
-                        <div class="flex justify-center">
-                            <a href="https://chequeado.com/">
-                                <img src="{{ asset('assets/img/chequeado.png') }}" alt="Logo 5" class="h-auto max-h-7 mx-4">
-                            </a>
-                            <a href="https://factchequeado.com/">
-                                <img src="{{ asset('assets/img/factchequeado.png') }}" alt="Logo 4" class="h-auto max-h-5 mx-4">
-                            </a>
-                            <a href="https://www.lasillavacia.com/">
-                                <img src="{{ asset('assets/img/lasillavacia.png') }}" alt="Logo 7" class="h-auto max-h-12 mx-6 pb-6">
-                            </a>
-                            <a href="https://documentedny.com/">
-                                <img src="{{ asset('assets/img/documentared.png') }}" alt="Logo 8" class="h-auto max-h-16 mx-4 pb-6">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
-        </section>
-    {% endblock %}
-    {% block comofunciona %}
-        {# como funciona botalite #}
-        <section>
-            <div id="howWeWork" class="flex justify-center bg-white">
-                <div class="bg-white grid grid-cols-2 gap-6 mx-64 px-16">
-                    <!-- Primera columna -->
+   {% block factalite %}
+    {# factalite #}
+    <section>
+        <div id="factalite" class="bg-white px-6 md:px-80 pb-8">
+            <!-- Versión escritorio -->
+            <div class="hidden md:block">
+                <div class="grid grid-cols-2 gap-6">
                     <div>
-                        <img src="{{ asset('assets/img/como-funciona-botalite.png') }}" alt="Imagen 1" class="w-full h-auto p-4 m-4">
+                        <!-- Primera columna -->
+                        <div class="flex flex-col items-start gap-4 text-center">
+                            <!-- Logo -->
+                            <img src="{{ asset('assets/img/factalite.png') }}" alt="Logo Factalite" class="w-1/2 h-auto">
+                            <!-- Subtítulo -->
+                            <h3 class="text-xl leading-tight text-left whitespace-normal pb-8">Our specialized messaging solution for <br> fact-checking organizations</h3>
+                        </div>
+                        <!-- Imagen -->
+                        <img src="{{ asset('assets/img/pantalla.svg') }}" alt="pantalla factalite" class="w-full">
+                        <!-- Columnas inferiores -->
+                        <div class="grid grid-cols-3 gap-8 p-6">
+                            <div class="flex flex-col items-center justify-center">
+                                <img src="{{ asset('assets/img/grafico.svg') }}" alt="Imagen 1" class="w-1/3 h-auto mx-auto pb-2">
+                                <h4 class="text-2xl font-bold">Data-based decisions</h4>
+                                <p>with the support of an early warning system for viral disinformation campaigns</p>
+                            </div>
+                            <div class="flex flex-col items-center justify-center">
+                                <img src="{{ asset('assets/img/carpeta.svg') }}" alt="Imagen 2" class="w-1/3 h-auto mx-auto pb-1">
+                                <h4 class="text-2xl font-bold">Efficient management</h4>
+                                <p>assigns and monitors what your team of fact-checkers is working on</p>
+                            </div>
+                            <div class="flex flex-col items-center justify-center">
+                                <img src="{{ asset('assets/img/lupa.svg') }}" alt="Imagen 3" class="w-1/3 h-auto mx-auto pb-2">
+                                <h4 class="text-2xl font-bold">Improved research</h4>
+                                <p>analyzing trends and with API access for researchers</p>
+                            </div>
+                        </div>
                     </div>
-
-                    <!-- Segunda columna -->
                     <div>
-                        <h3 class="text-4xl font-semibold pt-10 m-4 text-[#00BDD9]">How does Botalite work?</h3>
-                        <p class="pl-2 px-4 max-w-md font-normal ext-lg">The conversational agent employs Machine Learning and Natural Language Processing tools that enable organizations to crowdsource, organize and analyze disinformation content and provide automated replies to user queries. Botalite is a powerful tool to organize received content, prioritize what to debunk and collect disinformation data for further analysis.</p>
-                        <h2 class="mt-4 text-black text-2xl font-bold mb-4">Product standard features</h2>
-                        <img src="{{ asset('assets/img/product-standard.png') }}" alt="Imagen 2" class="w-full h-auto">
+                        <!-- Segunda columna -->
+                        <div class="ml-8 mr-14 pt-28 pr-26">
+                            <div>
+                                <h3 class="pb-2 pl-2 font-body font-bold uppercase text-[#00BDD9] lg:text-2xl">Fight disinformation on private messaging platforms</h3>
+                                <p class="font-semibold tracking-wide text-lg">Factalite is a natural language semi-automated chatbot for WhatsApp and other private messaging apps, linked to a centralized database and platform designed to tackle disinformation circulating on private messaging platforms in all formats: text, audio, image, and video.</p>
+                                <hr class="border-black my-4">
+                            </div>
+                            <div>
+                                <h3 class="pb-2 pl-2 font-body font-bold uppercase text-[#00BDD9] lg:text-2xl">Deliver the information citizens need</h3>
+                                <p class="font-semibold tracking-wide text-lg">Factalite allows fact-checkers and media outlets to deliver verified information automatically to users that report disinformation and provide citizens with additional services including media literacy courses, newsletters, and surveys.</p>
+                                <hr class="border-black my-4">
+                            </div>
+                            <div>
+                                <h3 class="pb-2 pl-2 font-body font-bold uppercase text-[#00BDD9] lg:text-2xl">Transform the newsroom workflow</h3>
+                                <p class="font-semibold tracking-wide text-lg">An AI-supported database system transforms the workflow of journalists and fact-checkers by enabling the automated matching and collection of disinformation content reported by users.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-
-
-            <div class="flex justify-center bg-white">
-                <img id="whoAreWe" src="{{ asset('assets/img/recuadro.png') }}" alt="Imagen 2" class="w-1/2 h-auto">
+            
+            <!-- Versión móvil -->
+            <div class="md:hidden">
+                <!-- Imagen -->
+                <img src="{{ asset('assets/img/pantalla.svg') }}" alt="pantalla factalite" class="w-full mx-auto">
+                <!-- Primera columna -->
+                <div class="flex flex-col items-start gap-4 text-center">
+                    <!-- Logo -->
+                    <img src="{{ asset('assets/img/factalite.png') }}" alt="Logo Factalite" class="w-1/2 h-auto mx-auto">
+                    <!-- Subtítulo -->
+                    <h3 class="text-xl leading-tight text-left whitespace-normal pb-8">Our specialized messaging solution for <br> fact-checking organizations</h3>
+                </div>
+                <!-- Columnas inferiores -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 p-6">
+                    <div class="flex flex-col items-center justify-center">
+                        <img src="{{ asset('assets/img/grafico.svg') }}" alt="Imagen 1" class="w-1/3 h-auto mx-auto pb-2">
+                        <h4 class="text-2xl font-bold">Data-based decisions</h4>
+                        <p>with the support of an early warning system for viral disinformation campaigns</p>
+                    </div>
+                    <div class="flex flex-col items-center justify-center">
+                        <img src="{{ asset('assets/img/carpeta.svg') }}" alt="Imagen 2" class="w-1/3 h-auto mx-auto pb-1">
+                        <h4 class="text-2xl font-bold">Efficient management</h4>
+                        <p>assigns and monitors what your team of fact-checkers is working on</p>
+                    </div>
+                    <div class="flex flex-col items-center justify-center">
+                        <img src="{{ asset('assets/img/lupa.svg') }}" alt="Imagen 3" class="w-1/3 h-auto mx-auto pb-2">
+                        <h4 class="text-2xl font-bold">Improved research</h4>
+                        <p>analyzing trends and with API access for researchers</p>
+                    </div>
+                </div>
+                <!-- Segunda columna -->
+                <div class="ml-2 md:ml-8 pt-8 pr-2 md:pr-26">
+                    <div>
+                        <h3 class="pb-2 pl-2 font-body font-bold uppercase text-[#00BDD9] lg:text-2xl">Fight disinformation on private messaging platforms</h3>
+                        <p class="font-semibold tracking-wide text-lg">Factalite is a natural language semi-automated chatbot for WhatsApp and other private messaging apps, linked to a centralized database and platform designed to tackle disinformation circulating on private messaging platforms in all formats: text, audio, image, and video.</p>
+                        <hr class="border-black my-4">
+                    </div>
+                    <div>
+                        <h3 class="pb-2 pl-2 font-body font-bold uppercase text-[#00BDD9] lg:text-2xl">Deliver the information citizens need</h3>
+                        <p class="font-semibold tracking-wide text-lg">Factalite allows fact-checkers and media outlets to deliver verified information automatically to users that report disinformation and provide citizens with additional services including media literacy courses, newsletters, and surveys.</p>
+                        <hr class="border-black my-4">
+                    </div>
+                    <div>
+                        <h3 class="pb-2 pl-2 font-body font-bold uppercase text-[#00BDD9] lg:text-2xl">Transform the newsroom workflow</h3>
+                        <p class="font-semibold tracking-wide text-lg">An AI-supported database system transforms the workflow of journalists and fact-checkers by enabling the automated matching and collection of disinformation content reported by users.</p>
+                    </div>
+                </div>
             </div>
+        </div>
+    </section>
+{% endblock %}
 
 
-        </section>
-    {% endblock %}
+{% block organizations %}
+    {# organizations line #}
+    <section>
+        <div class="bg-[#72D1DF] pb-6">
+            <div class="flex justify-center items-center space-x-2">
+                <h2 class="my-4 text-white text-3xl font-bold mb-4">Organizations that trust in our products</h2>
+            </div>
+            <div class="flex justify-center">
+                <div class="flex items-center flex-col">
+                    <!-- Primera línea de logos -->
+                    <div class="flex justify-center pb-5">
+                        <a href="https://maldita.es/">
+                            <img src="{{ asset('assets/img/maldita.png') }}" alt="Logo 1" class="h-auto max-h-14 mx-4">
+                        </a>
+                        <a href="https://correctiv.org/">
+                            <img src="{{ asset('assets/img/correctiv.png') }}" alt="Logo 2" class="h-auto max-h-14 mx-4">
+                        </a>
+                        <a href="https://english.factcrescendo.com/">
+                            <img src="{{ asset('assets/img/factcrecendo.png') }}" alt="Logo 3" class="h-auto max-h-14 mx-4">
+                        </a>
+                        <a href="https://www.dpa.com/">
+                            <img src="{{ asset('assets/img/dpa-logo.png') }}" alt="Logo 6" class="h-auto max-h-14 mx-4">
+                        </a>
+                    </div>
+
+                    <!-- Segunda línea de logos -->
+                    <div class="flex justify-center">
+                        <a href="https://chequeado.com/">
+                            <img src="{{ asset('assets/img/chequeado.png') }}" alt="Logo 5" class="h-auto max-h-7 mx-4">
+                        </a>
+                        <a href="https://factchequeado.com/">
+                            <img src="{{ asset('assets/img/factchequeado.png') }}" alt="Logo 4" class="h-auto max-h-5 mx-4">
+                        </a>
+                        <a href="https://www.lasillavacia.com/">
+                            <img src="{{ asset('assets/img/lasillavacia.png') }}" alt="Logo 7" class="h-auto max-h-12 mx-6 pb-6">
+                        </a>
+                        <a href="https://documentedny.com/">
+                            <img src="{{ asset('assets/img/documentared.png') }}" alt="Logo 8" class="h-auto max-h-16 mx-4 pb-6">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block comofunciona %}
+    {# como funciona botalite #}
+    <section>
+        <div id="howWeWork" class="flex justify-center bg-white">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mx-4 md:mx-64 px-16">
+                <!-- Primera columna -->
+                <div class="md:hidden">
+                    <img src="{{ asset('assets/img/como-funciona-botalite.png') }}" alt="Imagen 1" class="w-full h-auto p-4 m-4">
+                </div>
+
+                <!-- Segunda columna -->
+                <div class="flex flex-col justify-center">
+                    <h3 class="text-4xl font-semibold pt-10 m-4 text-[#00BDD9]">How does Botalite work?</h3>
+                    <p class="pl-2 px-4 max-w-md font-normal ext-lg">The conversational agent employs Machine Learning and Natural Language Processing tools that enable organizations to crowdsource, organize and analyze disinformation content and provide automated replies to user queries. Botalite is a powerful tool to organize received content, prioritize what to debunk and collect disinformation data for further analysis.</p>
+                    <h2 class="mt-4 text-black text-2xl font-bold mb-4">Product standard features</h2>
+                    <img src="{{ asset('assets/img/product-standard.png') }}" alt="Imagen 2" class="w-full h-auto">
+                </div>
+
+                <!-- Tercera columna -->
+                <div class="hidden md:block">
+                    <img src="{{ asset('assets/img/como-funciona-botalite.png') }}" alt="Imagen 1" class="w-full h-auto p-4 m-4">
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+
+{% block waw %}
+<div class="flex justify-center">
+  <div class="bg-[#00bdd9] p-4 m-4 mx-auto md:max-w-[50%]">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="font-bold">Botalite is a tech company based in Spain totally owned by Maldita.es Foundation that develops automated conversational chatbots for messaging apps focused on fact-checking, media outlets and social organizations.</div>
+      <div>We began as a company focused on conversational tools to improve organization’s service to citizens and reduce the spread of disinformation on private messaging apps. The semi-automated chatbot solution developed for Maldita.es in Spain was awarded the European Press Prize in Innovation in 2021.</div>
+    </div>
+  </div>
+</div>
+
+            {% endblock %}
+
     {% block footer %}
         {# footer #}
 

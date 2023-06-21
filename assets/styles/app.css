@@ -4,5 +4,11 @@
 
 
 body {
-    background-color: lightgray;
+    background-color: rgb(255, 255, 255);
+}
+
+
+html, body {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
 }
