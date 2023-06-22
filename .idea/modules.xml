@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/botalite.iml" filepath="$PROJECT_DIR$/.idea/botalite.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/botalite-web.iml" filepath="$PROJECT_DIR$/.idea/botalite-web.iml" />
     </modules>
   </component>
 </project>
