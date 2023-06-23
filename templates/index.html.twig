@@ -1,5 +1,55 @@
 {% extends "base.html.twig" %}
 
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+        window.fbAsyncInit = function () {
+            // JavaScript SDK configuration and setup
+            FB.init({
+                appId:    '621829865763918', // Facebook App ID
+                cookie:   true, // enable cookies
+                xfbml:    true, // parse social plugins on this page
+                version:  'v13.0' //Graph API version
+            });
+            FB.AppEvents.logPageView();
+        };
+
+        // Load the JavaScript SDK asynchronously
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        // Facebook Login with JavaScript SDK
+        function launchWhatsAppSignup() {
+            // Conversion tracking code
+            // fbq && fbq('trackCustom', 'WhatsAppOnboardingStart', {appId: '621829865763918', feature: 'whatsapp_embedded_signup'});
+
+            // Launch Facebook login
+            FB.login(function (response) {
+                if (response.authResponse) {
+                    const accessToken = response.authResponse.accessToken;
+                    //Use this token to call the debug_token API and get the shared WABA's ID
+                } else {
+                    console.log('User cancelled login or did not fully authorize.');
+                }
+            }, {
+                scope: 'business_management,whatsapp_business_management',
+                extras: {
+                    feature: 'whatsapp_embedded_signup',
+                    setup: {}
+                }
+            });
+        }
+
+    </script>
+
+{% endblock %}
+
 {% block body %}
     {% block header %}
         <section
@@ -24,9 +74,9 @@
                                     work?</a>
                                 <a href="#whoAreWe" class="text-xs md:text-base font-semibold text-white">Who are
                                     we?</a>
-                                <button class="hidden md:block bg-cyan-600 hover:bg-blue-700 text-white text-xs font-bold py-1 md:px-3 rounded-full">
+                                <a role="button" onclick="launchWhatsAppSignup()" class="hidden md:block bg-cyan-600 hover:bg-cyan-800 text-white text-xs font-bold py-1 md:px-3 rounded-full">
                                     Embedded signup
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </nav>
@@ -37,7 +87,8 @@
 
                     <div class="mt-12 space-y-6 justify-center px-4 md:px-0 md:justify-between text-white md:flex flex-row md:gap-6 md:space-y-0 lg:gap-12 lg:items-center z-10">
                         <div class="md:w-2/3 lg:w-1/2">
-                            <span role="heading" class="tracking-wide text-5xl leading-none font-bold text-white md:text-4xl lg:text-5xl"
+                            <span role="heading"
+                                  class="tracking-wide text-5xl leading-none font-bold text-white md:text-4xl lg:text-5xl"
                                     {{ stimulus_controller('symfony/ux-typed', {
                                         strings: [
                                             '🤖 Chatbots to shape a better service for your community ✨',
@@ -151,7 +202,7 @@
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-2 p-2">
                             <div class="flex flex-col px-2">
                                 <img src="{{ asset('assets/img/grafico.svg') }}" alt="Imagen 1"
-                                     class="w-1/3 h-auto mx-auto p-4">
+                                     class="h-24 p-4">
                                 <h4 class="text-2xl font-bold leading-none text-center">Data-based decisions</h4>
                                 <p class="text-center text-sm">with the support of an early warning system for viral
                                     disinformation
@@ -159,14 +210,14 @@
                             </div>
                             <div class="flex flex-col px-2">
                                 <img src="{{ asset('assets/img/carpeta.svg') }}" alt="Imagen 2"
-                                     class="w-1/3 h-auto mx-auto p-4">
+                                     class="h-24 p-4">
                                 <h4 class="text-2xl font-bold leading-none text-center">Efficient management</h4>
                                 <p class="text-center text-sm">assigns and monitors what your team of fact-checkers is
                                     working on</p>
                             </div>
                             <div class="flex flex-col px-2">
                                 <img src="{{ asset('assets/img/lupa.svg') }}" alt="Imagen 3"
-                                     class="w-1/3 h-auto mx-auto p-4">
+                                     class="h-24 p-4">
                                 <h4 class="text-2xl font-bold leading-none text-center">Improved research</h4>
                                 <p class="text-center text-sm">analyzing trends and with API access for researchers</p>
                             </div>
@@ -175,7 +226,8 @@
 
                     <div class="md:ml-8 md:w-1/2 flex flex-col md:flex-col justify-center">
                         <div class="mt-6 md:mt-0">
-                            <h3 class="pb-2 pl-2 font-body font-bold uppercase text-[#00BDD9] lg:text-2xl text-center md:text-end">Fight
+                            <h3 class="pb-2 pl-2 font-body font-bold uppercase text-[#00BDD9] lg:text-2xl text-center md:text-end">
+                                Fight
                                 disinformation on private messaging platforms</h3>
                             <p class="text-base text-center md:text-end">Factalite is a natural language
                                 semi-automated chatbot for WhatsApp and other private messaging apps, linked to
@@ -208,18 +260,18 @@
         </section>
     {% endblock %}
 
-
     {% block organizations %}
         {# organizations line #}
         <section>
             <div class="bg-[#fafafa] p-6 border border-gray-200">
                 <div class="flex justify-center items-center space-x-2">
-                    <h2 class="my-4 text-cyan-600 text-3xl font-bold mb-12">Organizations that trust in our products</h2>
+                    <h2 class="my-4 text-cyan-600 text-3xl font-bold mb-12">Organizations that trust in our
+                        products</h2>
                 </div>
                 <div class="flex justify-center">
                     <div class="flex flex-wrap items-center flex-col">
                         <!-- Primera línea de logos -->
-                        <div class="flex justify-center pb-5 items-center">
+                        <div class="flex flex-col md:flex-row justify-center pb-5 items-center gap-8">
                             <a href="https://maldita.es/">
                                 <img src="{{ asset('assets/img/maldita.png') }}" alt="Logo 1"
                                      class="h-auto max-h-14 mx-4 max-w-[180px]">
@@ -239,7 +291,7 @@
                         </div>
 
                         <!-- Segunda línea de logos -->
-                        <div class="flex justify-center items-center">
+                        <div class="flex flex-col md:flex-row justify-center items-center gap-8">
                             <a href="https://chequeado.com/">
                                 <img src="{{ asset('assets/img/chequeado.png') }}" alt="Logo 5"
                                      class="h-auto max-h-7 mx-4 max-w-[180px]">
@@ -268,23 +320,33 @@
         <section>
             <div id="howWeWork" class="flex justify-center bg-white">
                 <div class="max-w-7xl">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mx-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mx-12">
                         <!-- Primera columna -->
                         <div class="md:hidden">
                             <img src="{{ asset('assets/img/como-funciona-botalite.png') }}" alt="Imagen 1"
-                                 class="w-full h-auto p-4 m-4">
+                                 class="p-4 m-4">
                         </div>
 
                         <!-- Segunda columna -->
                         <div class="flex flex-col justify-center">
-                            <h3 class="text-4xl font-semibold pt-10 my-4 text-[#00BDD9]">How does Botalite work?</h3>
+                            <h3 class="text-4xl font-semibold md:pt-10 md:my-4 text-[#00BDD9]">How does Botalite work?</h3>
                             <p class="py-4 max-w-md font-normal text-lg">The conversational agent employs Machine
                                 Learning and Natural Language Processing tools that enable organizations to crowdsource,
-                                organize and analyze disinformation content and provide automated replies to user queries.
+                                organize and analyze disinformation content and provide automated replies to user
+                                queries.
                                 Botalite is a powerful tool to organize received content, prioritize what to debunk and
                                 collect disinformation data for further analysis.</p>
                             <h2 class="mt-4 text-black text-2xl font-bold mb-4">Product standard features</h2>
-                            <img src="{{ asset('assets/img/product-standard.png') }}" alt="Imagen 2" class="w-full h-auto">
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-[#00bdd9] px-2 py-1 rounded-lg text-white">Content search with multimedia (Al matching) and text</span>
+                                <span class="bg-[#00bdd9] px-2 py-1 rounded-lg text-white">Multimedia newsletters with scheduling capability</span>
+                                <span class="bg-[#00bdd9] px-2 py-1 rounded-lg text-white">Multimedia bulletin (requested by user)</span>
+                                <span class="bg-[#00bdd9] px-2 py-1 rounded-lg text-white">Content distribution by request as defined path</span>
+                                <span class="bg-[#00bdd9] px-2 py-1 rounded-lg text-white">Automated early warning alerts</span>
+                                <span class="bg-[#00bdd9] px-2 py-1 rounded-lg text-white">Surveys</span>
+                                <span class="bg-[#00bdd9] px-2 py-1 rounded-lg text-white">Multimedia interactive courses</span>
+                            </div>
+
                         </div>
 
                         <!-- Tercera columna -->
@@ -300,14 +362,15 @@
 
 
     {% block waw %}
-        <div class="flex justify-center">
-            <div class="bg-[#00bdd9] p-4 m-4 mx-auto md:max-w-[50%]">
+        <div id="whoAreWe" class="flex justify-center mt-14">
+            <div class="pt-8 w-full bg-[#fafafa] py-8 px-8">
+                <h3 class="text-4xl font-semibold md:pt-10 md:my-4 text-transparent bg-clip-text bg-gradient-to-r from-[#00c4cc] to-[#00bdd9] mb-8">Who are we?</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="font-bold">Botalite is a tech company based in Spain totally owned by Maldita.es
+                    <div class="font-bold text-[#00bdd9]">Botalite SL is a tech company based in Spain totally owned by Maldita.es
                         Foundation that develops automated conversational chatbots for messaging apps focused on
                         fact-checking, media outlets and social organizations.
                     </div>
-                    <div>We began as a company focused on conversational tools to improve organization’s service to
+                    <div class="text-cyan-600">We began as a company focused on conversational tools to improve organization’s service to
                         citizens and reduce the spread of disinformation on private messaging apps. The semi-automated
                         chatbot solution developed for Maldita.es in Spain was awarded the European Press Prize in
                         Innovation in 2021.
@@ -321,7 +384,7 @@
     {% block footer %}
         {# footer #}
 
-        <footer class="bg-[#00BDD9] rounded-lg shadow dark:bg-gray-900">
+        <footer class="bg-gradient-to-r from-[#00c4cc] to-[#00bdd9] shadow dark:bg-gray-900">
             <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
                 <div class="sm:flex sm:items-center sm:justify-between">
                     <a href="#" class="flex items-center mb-4 sm:mb-0">
