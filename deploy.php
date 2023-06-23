@@ -64,7 +64,7 @@ after('deploy:failed', 'deploy:unlock');
 // Migrate database before symlink new release.
 task('database:migrate')->select('roles=db');
 
-before('deploy:symlink', 'database:migrate');
+//before('deploy:symlink', 'database:migrate');
 
 task( 'load:env-vars', function () {
     $environment = run( 'cat {{deploy_path}}/..env.local' );
