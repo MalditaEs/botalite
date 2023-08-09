@@ -1,0 +1,173 @@
+{% extends "base.html.twig" %}
+
+
+{% block body %}
+    {% block header %}
+        <section
+                class="relative bg-cover bg-center bg-no-repeat pt-4 bg-gradient-to-r from-[#00c4cc] to-[#00bdd9] flex justify-center">
+            <div class="max-w-7xl z-20">
+
+                <header class="md:px-12 md:mb-6">
+                    <nav class="mx-auto flex flex-col md:flex-row justify-between max-w-7xl py-6 md:gap-20"
+                         aria-label="Global">
+                        <div class="flex justify-center">
+                            <a href="https://botalite.es" class="-m-1.5 p-1.5">
+                                <span class="sr-only">Botalite</span>
+                                <img src="{{ asset('assets/img/logotypeBotalite.svg') }}" loading="lazy"
+                                     alt="Botalite Logo" class="w-36">
+                            </a>
+                        </div>
+
+                        <div class="mt-4 md:mt-0 lg:flex lg:justify-end px-4 md:px-0">
+                            <div class="flex md:gap-x-6 justify-between md:justify-end items-center flex-wrap md:h-10 gap-y-2">
+                                <a href="#" class="text-xs md:text-base font-semibold text-white">Home</a>
+                                <a href="#factalite" class="text-xs md:text-base font-semibold text-white">Factalite</a>
+                                <a href="#howWeWork" class="text-xs md:text-base font-semibold text-white">How we
+                                    work?</a>
+                                <a href="#whoAreWe" class="text-xs md:text-base font-semibold text-white">Who are
+                                    we?</a>
+                                <a role="button" onclick="launchWhatsAppSignup()"
+                                   class="hidden md:block bg-cyan-600 hover:bg-cyan-800 text-white text-xs font-bold py-1 md:px-3 rounded-full">
+                                    Embedded signup
+                                </a>
+                            </div>
+                        </div>
+                    </nav>
+                </header>
+
+                {# Chatbot title #}
+                <div class="md:px-12">
+
+                    <div class="mt-12 space-y-6 justify-center px-4 md:px-0 md:justify-between text-white md:flex flex-row md:gap-6 md:space-y-0 lg:gap-12 lg:items-center z-10">
+                        <div class="md:w-2/3 lg:w-1/2">
+                            <span role="heading"
+                                  class="tracking-wide text-5xl leading-none font-bold text-white md:text-4xl lg:text-5xl"
+                            >Legal Terms of Service</span>
+
+                            <p class="my-8 text-white text-xl">
+                                This terms of service are effective starting 1st of January, 2023.
+                                To offer our service, Botalite SL will process personal data based on our clients'
+                                specific instructions and requests. We act in accordance with our client's directives
+                                and do not
+                                assume control or determine the means of processing personal data outside of your
+                                explicit instructions.
+                            </p>
+
+                            <div class="prose prose-lg mx-auto px-4">
+
+                                <h3 class="text-xl font-bold mb-4">1. Data Processing and GDPR</h3>
+                                <p class="mb-2">In compliance with the European General Data Protection Regulation (GDPR), we acknowledge our responsibilities as a Data Processor.</p>
+                                <p class="mb-4">Every data is processed in the European Union area.</p>
+
+                                <h3 class="text-xl font-bold mb-4">2. Data Sharing and Disclosure</h3>
+                                <p class="mb-2">We are committed to ensuring the confidentiality and protection of personal data. No personal data provided to Botalite SL is shared with, sold, or disclosed to any third party, unless required by law.</p>
+
+                                <p class="mb-4">The non-personal data consisting on contents sent by the final user of the service will be processed accordingly:</p>
+
+                                <table class="table-auto w-full mb-4">
+                                    <thead>
+                                    <tr>
+                                        <th class="px-4 py-2 border">PROCESSOR</th>
+                                        <th class="px-4 py-2 border">FUNCTION</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="px-4 py-2 border">Algolia</td>
+                                        <td class="px-4 py-2 border">Text searching functionality</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-2 border">Google</td>
+                                        <td class="px-4 py-2 border">Speech-to-text, image OCR, entities extraction.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-2 border">Amazon</td>
+                                        <td class="px-4 py-2 border">Media storage</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                                <h3 class="text-xl font-bold mb-4">3. Responsibilities</h3>
+                                <p class="mb-2">As the Data Controller, the client is responsible for ensuring that any data you provide to Botalite SL complies with relevant data protection regulations, including obtaining any necessary permissions and consents for its use and processing.</p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+        </section>
+    {% endblock %}
+    {% block boxes %}
+
+    {% endblock %}
+    {% block line %}
+
+    {% endblock %}
+    {% block factalite %}
+
+    {% endblock %}
+
+    {% block organizations %}
+
+    {% endblock %}
+
+    {% block comofunciona %}
+
+    {% endblock %}
+
+
+    {% block waw %}
+        <div id="whoAreWe" class="flex justify-center">
+            <div class="pt-8 w-full bg-[#fafafa] py-8 px-8">
+                <h3 class="text-4xl font-semibold md:pt-10 md:my-4 text-transparent bg-clip-text bg-gradient-to-r from-[#00c4cc] to-[#00bdd9] mb-8">
+                    Who are we?</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="font-bold text-[#00bdd9]">Botalite SL is a tech company based in Spain totally owned by
+                        Maldita.es
+                        Foundation that develops automated conversational chatbots for messaging apps focused on
+                        fact-checking, media outlets and social organizations.
+                    </div>
+                    <div class="text-cyan-600">We began as a company focused on conversational tools to improve
+                        organization’s service to
+                        citizens and reduce the spread of disinformation on private messaging apps. The semi-automated
+                        chatbot solution developed for Maldita.es in Spain was awarded the European Press Prize in
+                        Innovation in 2021.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% endblock %}
+
+    {% block footer %}
+        {# footer #}
+
+        <footer class="bg-gradient-to-r from-[#00c4cc] to-[#00bdd9] shadow dark:bg-gray-900">
+            <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+                <div class="sm:flex sm:items-center sm:justify-between">
+                    <a href="#" class="flex items-center mb-4 sm:mb-0">
+                        <img src="{{ asset('assets/img/botalitelogo.png') }}" class="h-8 mr-3" alt="Botalite Logo"/>
+                        <span class="text-sm font-medium text-white leading-tight">
+          Chatbots to shape a better service for your community
+        </span>
+                    </a>
+                    <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-white sm:mb-0">
+                        <li>
+                            <a href="{{ path('privacy') }}" class="mr-4 hover:underline md:mr-6">Privacy</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('legal') }}" class="mr-4 hover:underline md:mr-6">Legal</a>
+                        </li>
+                    </ul>
+                </div>
+                <hr class="my-6 border-white sm:mx-auto lg:my-8"/>
+                <span class="block text-sm text-white sm:text-center">© 2023 <a href="#" class="hover:underline">Botalite™</a>. All Rights Reserved.</span>
+            </div>
+        </footer>
+    {% endblock %}
+
+{% endblock %}
+
+
+
+
