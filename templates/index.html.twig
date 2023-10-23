@@ -38,11 +38,30 @@
                     console.log('User cancelled login or did not fully authorize.');
                 }
             }, {
-                scope: 'business_management,whatsapp_business_management,pages_messaging,pages_messaging_subscriptions',
+                scope: 'business_management, whatsapp_business_management',
+                response_type: 'code',
                 extras: {
                     feature: 'whatsapp_embedded_signup',
                     setup: {}
                 }
+            });
+        }
+
+        function launchMessengerSignup() {
+            // Conversion tracking code
+            // fbq && fbq('trackCustom', 'WhatsAppOnboardingStart', {appId: '621829865763918', feature: 'whatsapp_embedded_signup'});
+
+            // Launch Facebook login
+            FB.login(function (response) {
+                if (response.authResponse) {
+                    const accessToken = response.authResponse.accessToken;
+                    //Use this token to call the debug_token API and get the shared WABA's ID
+                } else {
+                    console.log('User cancelled login or did not fully authorize.');
+                }
+            }, {
+                response_type: 'code',
+                config_id: '1743783846083843',
             });
         }
 
@@ -74,8 +93,11 @@
                                     work?</a>
                                 <a href="#whoAreWe" class="text-xs md:text-base font-semibold text-white">Who are
                                     we?</a>
-                                <a role="button" onclick="launchWhatsAppSignup()" class="hidden md:block bg-cyan-600 hover:bg-cyan-800 text-white text-xs font-bold py-1 md:px-3 rounded-full">
-                                    Embedded signup
+                                <a role="button" onclick="launchWhatsAppSignup()" class="hidden md:block bg-green-500 hover:bg-green-800 text-white text-xs font-bold py-1 md:px-3 rounded-full">
+                                    Start with WhatsApp
+                                </a>
+                                <a role="button" onclick="launchMessengerSignup()" class="hidden md:block bg-cyan-600 hover:bg-cyan-800 text-white text-xs font-bold py-1 md:px-3 rounded-full">
+                                    Start with Messenger
                                 </a>
                             </div>
                         </div>
