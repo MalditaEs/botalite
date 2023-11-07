@@ -55,7 +55,7 @@
             FB.login(function (response) {
                 if (response.authResponse) {
                     const accessToken = response.authResponse.accessToken;
-                    alert("Share this token with your Botalite point of contact: " + accessToken);
+                    prompt("Share this token with your Botalite point of contact:", accessToken);
                 } else {
                     console.log('User cancelled login or did not fully authorize.');
                 }
