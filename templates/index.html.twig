@@ -10,7 +10,7 @@
                 appId:    '621829865763918', // Facebook App ID
                 cookie:   true, // enable cookies
                 xfbml:    true, // parse social plugins on this page
-                version:  'v13.0' //Graph API version
+                version:  'v16.0' //Graph API version
             });
             FB.AppEvents.logPageView();
         };
@@ -55,7 +55,7 @@
             FB.login(function (response) {
                 if (response.authResponse) {
                     const accessToken = response.authResponse.accessToken;
-                    //Use this token to call the debug_token API and get the shared WABA's ID
+                    alert("Share this token with your Botalite point of contact: " + accessToken);
                 } else {
                     console.log('User cancelled login or did not fully authorize.');
                 }
