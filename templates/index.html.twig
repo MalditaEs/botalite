@@ -85,7 +85,7 @@
                     <nav class="mx-auto flex flex-col md:flex-row justify-between max-w-7xl py-6 md:gap-20" aria-label="Global">
                         <div class="flex justify-center">
                             <a href="https://botalite.es" class="-m-1.5 p-1.5">
-                                <span class="sr-only">Botalite</span>
+                                <span class="sr-only">Botalite: AI chatbots for your community · Specialized in fact-checking bots</span>
                                 <img src="{{ asset('assets/img/logotypeBotalite.svg') }}" loading="lazy"
                                      alt="Botalite Logo" class="w-36">
                             </a>
@@ -121,7 +121,7 @@
                                   class="tracking-wide text-5xl leading-none font-bold text-white md:text-4xl lg:text-5xl"
                                     {{ stimulus_controller('symfony/ux-typed', {
                                         strings: [
-                                            '🤖 Chatbots to shape a better service for your community ✨',
+                                            '🤖 AI-powered chatbots to shape a better service for your community ✨',
                                         ],
                                         loop: false,
                                         showCursor: false,
@@ -133,6 +133,20 @@
                                 transforms the relations of media outlets, CSOs, and other community-oriented
                                 organization’s with their communities.
                             </p>
+
+                            <!-- Available on Section -->
+                            <div class="flex flex-col sm:flex-row gap-8 items-center">
+                                <div class="flex flex-row gap-2 text-2xl justify-center items-center">
+                                    <i class="fab fa-whatsapp"></i>
+                                    <i class="fab fa-facebook-messenger"></i>
+                                    <i class="fab fa-telegram"></i>
+                                </div>
+                               <div class="flex flex-col gap-1 text-xl">
+                                   <span class="mr-0 sm:mr-2 mb-2 sm:mb-0">Available on</span>
+                                   <span class="font-semibold">WhatsApp, Facebook Messenger and Telegram</span>
+                               </div>
+                            </div>
+
                             <div class="divide-y space-y-4 divide-gray-100 dark:divide-gray-800">
 
                                 <div class="mt-8 flex gap-4 md:items-center md: justify-center md:justify-start">
@@ -305,8 +319,7 @@
                 </div>
                 <div class="flex justify-center">
                     <div class="flex flex-wrap items-center flex-col gap-8">
-                        <!-- Primera línea de logos -->
-                        <div class="flex flex-col md:flex-row justify-center items-center gap-8">
+                        <div class="flex flex-col flex-wrap md:flex-row justify-center items-center gap-8">
                             <a href="https://maldita.es/">
                                 <img src="{{ asset('assets/img/maldita.png') }}" alt="Logo 1"
                                      class="h-auto max-h-14 mx-4 max-w-[180px]">
@@ -327,12 +340,6 @@
                                 <img src="{{ asset('assets/img/la-diaria.png') }}" alt="Logo 9"
                                      class="h-auto max-h-14 mx-4 max-w-[180px]">
                             </a>
-                        </div>
-
-
-
-                        <!-- Segunda línea de logos -->
-                        <div class="flex flex-col md:flex-row justify-center items-center gap-8">
                             <a href="https://chequeado.com/">
                                 <img src="{{ asset('assets/img/chequeado.png') }}" alt="Logo 5"
                                      class="h-auto max-h-7 mx-4 max-w-[180px]">
@@ -353,9 +360,6 @@
                                 <img src="{{ asset('assets/img/logo-decheckers.png') }}" alt="Logo 10"
                                      class="h-auto max-h-16 mx-4 max-w-[180px]">
                             </a>
-                        </div>
-                        <!-- Tercera línea de logos -->
-                        <div class="flex flex-col md:flex-row justify-center items-center gap-8">
                             <a href="https://www.stopfake.org/">
                                 <img src="{{ asset('assets/img/stop.png') }}" alt="Logo 11"
                                      class="h-auto max-h-10 mx-4 max-w-[180px]">
@@ -384,7 +388,6 @@
                                 <img src="{{ asset('assets/img/issueone-logo.png') }}" alt="Logo"
                                      class="h-auto max-h-14 mx-4 max-w-[180px]">
                             </a>
-                        </div>
                     </div>
                 </div>
             </div>
