@@ -10,7 +10,7 @@
                 appId:    '621829865763918', // Facebook App ID
                 cookie:   true, // enable cookies
                 xfbml:    true, // parse social plugins on this page
-                version:  'v16.0' //Graph API version
+                version:  'v17.0' //Graph API version
             });
             FB.AppEvents.logPageView();
         };
@@ -47,24 +47,28 @@
             });
         }
 
+        // Ensure you have the Facebook SDK initialized correctly before calling this function.
         function launchMessengerSignup() {
-            // Conversion tracking code
-            // fbq && fbq('trackCustom', 'WhatsAppOnboardingStart', {appId: '621829865763918', feature: 'whatsapp_embedded_signup'});
 
-            // Launch Facebook login
-            FB.login(function (response) {
-                if (response.authResponse) {
-                    const accessToken = response.authResponse.accessToken;
-                    setTimeout(() => {
-                        prompt("Share this token with your Botalite point of contact:", accessToken);
-                    }, 2000);
-                } else {
-                    console.log('User cancelled login or did not fully authorize.');
+            FB.login(
+                function (response) {
+                    if (response.status === 'connected') {
+                        const accessToken = response.authResponse.accessToken;
+                        setTimeout(() => {
+                            prompt(
+                                "Share this token with your Botalite point of contact:",
+                                accessToken
+                            );
+                        }, 2000);
+                    } else {
+                        console.log('User cancelled login or did not fully authorize.');
+                    }
+                },
+                {
+                    scope: 'public_profile,email,page_events,pages_show_list,pages_messaging,pages_manage_metadata',
+                    response_type: 'code',
                 }
-            }, {
-                response_type: 'code',
-                config_id: '1743783846083843',
-            });
+            );
         }
 
     </script>
