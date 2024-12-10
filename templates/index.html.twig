@@ -4,45 +4,78 @@
     {{ parent() }}
 
     <script>
+        const processData = {
+            waba: null,
+            code: null
+        };
+
         window.fbAsyncInit = function () {
             // JavaScript SDK configuration and setup
             FB.init({
-                appId:    '621829865763918', // Facebook App ID
-                cookie:   true, // enable cookies
-                xfbml:    true, // parse social plugins on this page
-                version:  'v17.0' //Graph API version
+                appId: '621829865763918', // Facebook App ID
+                cookie: true, // enable cookies
+                xfbml: true, // parse social plugins on this page
+                version: 'v21.0' //Graph API version
             });
             FB.AppEvents.logPageView();
         };
+
+        // Session logging message event listener
+        window.addEventListener('message', (event) => {
+            if (event.origin !== "https://www.facebook.com" && event.origin !== "https://web.facebook.com") return;
+            try {
+                const data = JSON.parse(event.data);
+                if (data.type === 'WA_EMBEDDED_SIGNUP') {
+                    processData.waba = data;
+                }
+            } catch {
+            }
+        });
+
+        // Response callback
+        const fbLoginCallback = (response) => {
+            if (response.authResponse) {
+                processData.code = response.authResponse.code;
+
+                fetch('/onboarding', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({processData}),
+                })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        console.log('Success');
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
+            } else {
+                console.log('response: ', response);
+            }
+        }
 
         // Load the JavaScript SDK asynchronously
         (function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
+            js = d.createElement(s);
+            js.id = id;
             js.src = "https://connect.facebook.net/en_US/sdk.js";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
 
-        // Facebook Login with JavaScript SDK
+        // Launch method and callback registration
         function launchWhatsAppSignup() {
-            // Conversion tracking code
-            // fbq && fbq('trackCustom', 'WhatsAppOnboardingStart', {appId: '621829865763918', feature: 'whatsapp_embedded_signup'});
-
-            // Launch Facebook login
-            FB.login(function (response) {
-                if (response.authResponse) {
-                    const accessToken = response.authResponse.accessToken;
-                    //Use this token to call the debug_token API and get the shared WABA's ID
-                } else {
-                    console.log('User cancelled login or did not fully authorize.');
-                }
-            }, {
-                scope: 'business_management, whatsapp_business_management',
+            FB.login(fbLoginCallback, {
+                config_id: '273977862101961', // your configuration ID goes here
                 response_type: 'code',
+                override_default_response_type: true,
                 extras: {
-                    feature: 'whatsapp_embedded_signup',
-                    setup: {}
+                    setup: {},
+                    featureType: '',
+                    sessionInfoVersion: '3',
                 }
             });
         }
@@ -82,7 +115,8 @@
             <div class="max-w-7xl z-20">
 
                 <header class="md:px-12 md:mb-6">
-                    <nav class="mx-auto flex flex-col md:flex-row justify-between max-w-7xl py-6 md:gap-20" aria-label="Global">
+                    <nav class="mx-auto flex flex-col md:flex-row justify-between max-w-7xl py-6 md:gap-20"
+                         aria-label="Global">
                         <div class="flex justify-center">
                             <a href="https://botalite.es" class="-m-1.5 p-1.5">
                                 <span class="sr-only">Botalite: AI chatbots for your community · Specialized in fact-checking bots</span>
@@ -93,17 +127,25 @@
 
                         <div class="mt-4 md:mt-0 lg:flex lg:justify-end px-4 md:px-0">
                             <div class="flex md:gap-x-6 justify-between md:justify-end items-center flex-wrap md:h-10 gap-y-2">
-                                <a href="#" class="hover:bg-cyan-800 px-2 rounded-lg text-xs md:text-base font-semibold text-white">Home</a>
-                                <a href="#factalite" class="hover:bg-cyan-800 px-2 rounded-lg text-xs md:text-base font-semibold text-white">Factalite</a>
-                                <a href="#howWeWork" class="hover:bg-cyan-800 px-2 rounded-lg text-xs md:text-base font-semibold text-white">How we
+                                <a href="#"
+                                   class="hover:bg-cyan-800 px-2 rounded-lg text-xs md:text-base font-semibold text-white">Home</a>
+                                <a href="#factalite"
+                                   class="hover:bg-cyan-800 px-2 rounded-lg text-xs md:text-base font-semibold text-white">Factalite</a>
+                                <a href="#howWeWork"
+                                   class="hover:bg-cyan-800 px-2 rounded-lg text-xs md:text-base font-semibold text-white">How
+                                    we
                                     work?</a>
-                                <a href="#whoAreWe" class="hover:bg-cyan-800 px-2 rounded-lg text-xs md:text-base font-semibold text-white">Who are
+                                <a href="#whoAreWe"
+                                   class="hover:bg-cyan-800 px-2 rounded-lg text-xs md:text-base font-semibold text-white">Who
+                                    are
                                     we?</a>
                                 <div class="flex gap-2">
-                                    <a role="button" onclick="launchWhatsAppSignup()" class="hidden md:block bg-green-600 hover:bg-green-800 text-white text-xs font-bold py-1 md:px-3 rounded-full">
+                                    <a role="button" onclick="launchWhatsAppSignup()"
+                                       class="hidden md:block bg-green-600 hover:bg-green-800 text-white text-xs font-bold py-1 md:px-3 rounded-full">
                                         Start with WhatsApp
                                     </a>
-                                    <a role="button" onclick="launchMessengerSignup()" class="hidden md:block bg-cyan-600 hover:bg-cyan-800 text-white text-xs font-bold py-1 md:px-3 rounded-full">
+                                    <a role="button" onclick="launchMessengerSignup()"
+                                       class="hidden md:block bg-cyan-600 hover:bg-cyan-800 text-white text-xs font-bold py-1 md:px-3 rounded-full">
                                         Start with Messenger
                                     </a>
                                 </div>
@@ -141,10 +183,10 @@
                                     <i class="fab fa-facebook-messenger"></i>
                                     <i class="fab fa-telegram"></i>
                                 </div>
-                               <div class="flex flex-col gap-1 text-xl">
-                                   <span class="mr-0 sm:mr-2 mb-2 sm:mb-0">Available on</span>
-                                   <span class="font-semibold">WhatsApp, Facebook Messenger and Telegram</span>
-                               </div>
+                                <div class="flex flex-col gap-1 text-xl">
+                                    <span class="mr-0 sm:mr-2 mb-2 sm:mb-0">Available on</span>
+                                    <span class="font-semibold">WhatsApp, Facebook Messenger and Telegram</span>
+                                </div>
                             </div>
 
                             <div class="divide-y space-y-4 divide-gray-100 dark:divide-gray-800">
@@ -212,14 +254,14 @@
             <div class="bg-[#00BDD9] px-6 py-6">
                 <div class="flex justify-center items-center space-x-2">
                     <a href="https://www.facebook.com/business/partner-directory/search?solution_type=messaging&countries=ES&id=6947304475331974&section=overview">
-                    <picture>
-                        <source srcset="{{ asset('assets/img/MBP@4x.png') }}" media="(min-resolution: 4dppx)">
-                        <source srcset="{{ asset('assets/img/MBP@2x.png') }}" media="(min-resolution: 2dppx)">
-                        <img src="{{ asset('assets/img/MBP@1x.png') }}"
-                             alt="Meta Business Partner"
-                             class="object-contain h-20 w-auto"
-                             style="color: white">
-                    </picture>
+                        <picture>
+                            <source srcset="{{ asset('assets/img/MBP@4x.png') }}" media="(min-resolution: 4dppx)">
+                            <source srcset="{{ asset('assets/img/MBP@2x.png') }}" media="(min-resolution: 2dppx)">
+                            <img src="{{ asset('assets/img/MBP@1x.png') }}"
+                                 alt="Meta Business Partner"
+                                 class="object-contain h-20 w-auto"
+                                 style="color: white">
+                        </picture>
                     </a>
                     <picture>
                         <img src="{{ asset('assets/img/whatsapp-business-solution-provider-badge-3.webp') }}"
@@ -388,9 +430,9 @@
                                 <img src="{{ asset('assets/img/issueone-logo.png') }}" alt="Logo"
                                      class="h-auto max-h-14 mx-4 max-w-[180px]">
                             </a>
+                        </div>
                     </div>
                 </div>
-            </div>
         </section>
     {% endblock %}
 
@@ -408,7 +450,8 @@
 
                         <!-- Segunda columna -->
                         <div class="flex flex-col justify-center">
-                            <h3 class="text-4xl font-semibold md:pt-10 md:my-4 text-[#00BDD9]">How does Botalite work?</h3>
+                            <h3 class="text-4xl font-semibold md:pt-10 md:my-4 text-[#00BDD9]">How does Botalite
+                                work?</h3>
                             <p class="py-4 max-w-md font-normal text-lg">The conversational agent employs Machine
                                 Learning and Natural Language Processing tools that enable organizations to crowdsource,
                                 organize and analyze disinformation content and provide automated replies to user
@@ -443,13 +486,16 @@
     {% block waw %}
         <div id="whoAreWe" class="flex justify-center mt-14">
             <div class="pt-8 w-full bg-[#fafafa] py-8 px-8">
-                <h3 class="text-4xl font-semibold md:pt-10 md:my-4 text-transparent bg-clip-text bg-gradient-to-r from-[#00c4cc] to-[#00bdd9] mb-8">Who are we?</h3>
+                <h3 class="text-4xl font-semibold md:pt-10 md:my-4 text-transparent bg-clip-text bg-gradient-to-r from-[#00c4cc] to-[#00bdd9] mb-8">
+                    Who are we?</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="font-bold text-[#00bdd9]">Botalite SL is a tech company based in Spain totally owned by Maldita.es
+                    <div class="font-bold text-[#00bdd9]">Botalite SL is a tech company based in Spain totally owned by
+                        Maldita.es
                         Foundation that develops automated conversational chatbots for messaging apps focused on
                         fact-checking, media outlets and social organizations.
                     </div>
-                    <div class="text-cyan-600">We began as a company focused on conversational tools to improve organization’s service to
+                    <div class="text-cyan-600">We began as a company focused on conversational tools to improve
+                        organization’s service to
                         citizens and reduce the spread of disinformation on private messaging apps. The semi-automated
                         chatbot solution developed for Maldita.es in Spain was awarded the European Press Prize in
                         Innovation in 2021.
